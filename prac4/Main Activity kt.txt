@@ -1,0 +1,42 @@
+package com.example.myspinner
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
+    var courses = arrayOf<String?>("C", "Data structures",
+    "Interview prep", "Algorithms",
+    "DSA with java", "OS")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val spin = findViewById<Spinner>(R.id.coursesspinner)
+        spin.onItemSelectedListener = this
+
+        val ad: ArrayAdapter<*> = ArrayAdapter<Any?>(
+            this,
+            android.R.layout.simple_spinner_item,
+            courses)
+
+        ad.setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item)
+
+        spin.adapter = ad
+    }
+    override fun onItemSelected(parent: AdapterView<*>?,
+                                view: View, position: Int,
+                                id: Long) {
+        // make toastof name of course
+        // which is selected in spinner
+        Toast.makeText(applicationContext, courses[position], Toast.LENGTH_LONG).show()
+    }
+    override fun onNothingSelected(parent: AdapterView<*>?) {}
+}
