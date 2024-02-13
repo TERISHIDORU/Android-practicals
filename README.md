@@ -1,3 +1,3 @@
-# This File is made by Dhruv Kadam.
+# Made by Dhruv
 # Kindly edit the files by your name.
 Thank you
